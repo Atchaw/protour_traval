@@ -1,4 +1,7 @@
 import 'package:protour_traval/app_theme.dart';
+import 'package:protour_traval/custom_drawer/home_drawer.dart';
+import 'package:protour_traval/custom_drawer/drawer_user_controller.dart';
+//import 'package:protour_traval/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
@@ -13,7 +16,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
   @override
   void initState() {
     drawerIndex = DrawerIndex.HOME;
-    screenView = const MyHomePage();
+    // screenView = const MyHomePage();
     super.initState();
   }
 
@@ -46,19 +49,19 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
       drawerIndex = drawerIndexdata;
       if (drawerIndex == DrawerIndex.HOME) {
         setState(() {
-          screenView = const MyHomePage();
+          //  screenView = const MyHomePage();
         });
       } else if (drawerIndex == DrawerIndex.Help) {
         setState(() {
-          screenView = HelpScreen();
+          //screenView = HelpScreen();
         });
       } else if (drawerIndex == DrawerIndex.FeedBack) {
         setState(() {
-          screenView = FeedbackScreen();
+          //screenView = FeedbackScreen();
         });
       } else if (drawerIndex == DrawerIndex.Invite) {
         setState(() {
-          screenView = InviteFriend();
+          //screenView = InviteFriend();
         });
       } else {
         //do in your way......
