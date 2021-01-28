@@ -7,8 +7,6 @@ import 'package:protour_traval/custom_drawer/home_drawer.dart';
 import 'package:protour_traval/custom_drawer/drawer_user_controller.dart';
 import 'package:protour_traval/navigatoin_home_screen.dart';
 
-import 'package:protour_traval/hotel_booking/hotel_home_screen.dart';
-
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
