@@ -1,7 +1,5 @@
-import 'dart:math' as math;
 import 'package:protour_traval/app_theme.dart';
 import 'package:protour_traval/bottom_navigation_view/models/tabIcon_data.dart';
-import 'package:protour_traval/main.dart';
 import 'package:flutter/material.dart';
 
 class BottomBarView extends StatefulWidget {
@@ -49,7 +47,7 @@ class _BottomBarViewState extends State<BottomBarView>
                 child: Column(
                   children: <Widget>[
                     SizedBox(
-                      height: 62,
+                      height: 56,
                       child: Padding(
                         padding:
                             const EdgeInsets.only(left: 8, right: 8, top: 4),
@@ -84,20 +82,20 @@ class _BottomBarViewState extends State<BottomBarView>
                             ),
                             Expanded(
                               child: TabIcons(
-                                  tabIconData: widget.tabIconsList[2],
-                                  removeAllSelect: () {
-                                    setRemoveAllSelection(
-                                        widget.tabIconsList[2]);
-                                    widget.changeIndex(2);
-                                  }),
-                            ),
-                            Expanded(
-                              child: TabIcons(
                                   tabIconData: widget.tabIconsList[3],
                                   removeAllSelect: () {
                                     setRemoveAllSelection(
                                         widget.tabIconsList[3]);
                                     widget.changeIndex(3);
+                                  }),
+                            ),
+                            Expanded(
+                              child: TabIcons(
+                                  tabIconData: widget.tabIconsList[4],
+                                  removeAllSelect: () {
+                                    setRemoveAllSelection(
+                                        widget.tabIconsList[4]);
+                                    widget.changeIndex(4);
                                   }),
                             ),
                           ],
