@@ -1,5 +1,6 @@
 import 'package:protour_traval/app_theme.dart';
 import 'package:protour_traval/navigatoin_home_screen.dart';
+import 'package:protour_traval/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
         textTheme: AppTheme.textTheme,
         //platform: TargetPlatform.iOS,
       ),
-      home: NavigationHomeScreen(),
+      //home: NavigationHomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
