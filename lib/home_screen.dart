@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:protour_traval/bottom_navigation_view/bottom_bar_view.dart';
 import 'package:protour_traval/app_theme.dart';
 
-import 'package:protour_traval/custom_drawer/home_drawer.dart';
-import 'package:protour_traval/custom_drawer/drawer_user_controller.dart';
-import 'package:protour_traval/navigatoin_home_screen.dart';
+//import 'package:protour_traval/custom_drawer/home_drawer.dart';
+//import 'package:protour_traval/custom_drawer/drawer_user_controller.dart';
+//import 'package:protour_traval/navigatoin_home_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -49,6 +49,32 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         top: false,
         bottom: false,
         child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: AppTheme.white,
+            shape: ContinuousRectangleBorder(
+                borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(25.0),
+              bottomRight: Radius.circular(25.0),
+            )),
+            actions: [
+              IconButton(
+                  icon: Icon(
+                    Icons.qr_code,
+                    color: AppTheme.black,
+                  ),
+                  onPressed: () {}),
+            ],
+            title: SizedBox(
+              height: AppBar().preferredSize.height,
+              width: AppBar().preferredSize.width,
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 55, top: 6, bottom: 6),
+                  child: Image.asset('assets/images/logo.png'),
+                ),
+              ),
+            ),
+          ),
           backgroundColor: Colors.transparent,
           body: FutureBuilder<bool>(
             future: getData(),
@@ -72,13 +98,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   //    child: Scaffold(
   //     backgroundColor: AppTheme.nearlyWhite,
-  //     body: DrawerUserController(
-  //       screenIndex: drawerIndex,
-  //       drawerWidth: MediaQuery.of(context).size.width * 0.75,
-  //       onDrawerCall: (DrawerIndex drawerIndexdata) {
-  //         changeIndex(drawerIndexdata);
-  //callback from drawer for replace screen as user need with passing DrawerIndex(Enum index)
-  //       },
+  //     body: ,
   // screenView: screenView,
   //we replace screen view as we need on navigate starting screens like MyHomePage, HelpScreen, FeedbackScreen, etc...
   //    ),

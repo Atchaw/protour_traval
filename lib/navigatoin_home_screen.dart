@@ -1,7 +1,7 @@
 import 'package:protour_traval/app_theme.dart';
 import 'package:protour_traval/custom_drawer/home_drawer.dart';
 import 'package:protour_traval/custom_drawer/drawer_user_controller.dart';
-//import 'package:protour_traval/home_screen.dart';
+import 'package:protour_traval/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
   @override
   void initState() {
     drawerIndex = DrawerIndex.HOME;
-    // screenView = const MyHomePage();
+    screenView = HomeScreen();
     super.initState();
   }
 
@@ -36,7 +36,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
               changeIndex(drawerIndexdata);
               //callback from drawer for replace screen as user need with passing DrawerIndex(Enum index)
             },
-            // screenView: screenView,
+            screenView: screenView,
             //we replace screen view as we need on navigate starting screens like MyHomePage, HelpScreen, FeedbackScreen, etc...
           ),
         ),
@@ -49,19 +49,19 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
       drawerIndex = drawerIndexdata;
       if (drawerIndex == DrawerIndex.HOME) {
         setState(() {
-          //  screenView = const MyHomePage();
+          screenView = HomeScreen();
         });
       } else if (drawerIndex == DrawerIndex.Help) {
         setState(() {
-          //screenView = HelpScreen();
+          // screenView = HelpScreen();
         });
       } else if (drawerIndex == DrawerIndex.FeedBack) {
         setState(() {
-          //screenView = FeedbackScreen();
+          //  screenView = FeedbackScreen();
         });
       } else if (drawerIndex == DrawerIndex.Invite) {
         setState(() {
-          //screenView = InviteFriend();
+          // screenView = InviteFriend();
         });
       } else {
         //do in your way......
