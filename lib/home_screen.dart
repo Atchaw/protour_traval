@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:protour_traval/bottom_navigation_view/bottom_bar_view.dart';
 import 'package:protour_traval/app_theme.dart';
 
-//import 'package:protour_traval/custom_drawer/home_drawer.dart';
-//import 'package:protour_traval/custom_drawer/drawer_user_controller.dart';
-//import 'package:protour_traval/navigatoin_home_screen.dart';
+import 'package:protour_traval/hotel_booking/hotel_home_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -69,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               width: AppBar().preferredSize.width,
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 55, top: 6, bottom: 6),
+                  padding: const EdgeInsets.only(left: 52, top: 6, bottom: 6),
                   child: Image.asset('assets/images/logo.png'),
                 ),
               ),
@@ -96,15 +94,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-  //    child: Scaffold(
-  //     backgroundColor: AppTheme.nearlyWhite,
-  //     body: ,
-  // screenView: screenView,
-  //we replace screen view as we need on navigate starting screens like MyHomePage, HelpScreen, FeedbackScreen, etc...
-  //    ),
-  //  ),
-  //  );
-
   Future<bool> getData() async {
     await Future<dynamic>.delayed(const Duration(milliseconds: 200));
     return true;
@@ -120,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           tabIconsList: tabIconsList,
           addClick: () {},
           changeIndex: (int index) {
-            if (index == 0 || index == 2) {
+            if (index == 0) {
               animationController.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
@@ -130,13 +119,43 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   //  MyDiaryScreen(animationController: animationController);
                 });
               });
-            } else if (index == 1 || index == 3) {
+            } else if (index == 1) {
               animationController.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
                 }
                 setState(() {
-                  // tabBody = null;
+                  tabBody = HotelHomeScreen();
+                  //TrainingScreen(animationController: animationController);
+                });
+              });
+            } else if (index == 2) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  //  tabBody = HotelHomeScreen();
+                  //TrainingScreen(animationController: animationController);
+                });
+              });
+            } else if (index == 3) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  // tabBody = HotelHomeScreen();
+                  //TrainingScreen(animationController: animationController);
+                });
+              });
+            } else if (index == 4) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  // tabBody = HotelHomeScreen();
                   //TrainingScreen(animationController: animationController);
                 });
               });
