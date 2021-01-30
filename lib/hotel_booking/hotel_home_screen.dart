@@ -2,8 +2,8 @@ import 'dart:ui';
 import 'package:protour_traval/hotel_booking/hotel_list_view.dart';
 import 'package:protour_traval/hotel_booking/model/hotel_list_data.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intl/intl.dart';
+//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:intl/intl.dart';
 import 'hotel_app_theme.dart';
 import 'filters_screen.dart';
 
