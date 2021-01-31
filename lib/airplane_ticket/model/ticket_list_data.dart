@@ -1,5 +1,5 @@
-class TecketListData {
-  TecketListData({
+class TicketListData {
+  TicketListData({
     this.imagePath = '',
     this.timeDept = '',
     this.timeArr = '',
@@ -24,8 +24,8 @@ class TecketListData {
   String voleStop;
   String airportStop;
 
-  static List<TecketListData> hotelList = <TecketListData>[
-    TecketListData(
+  static List<TicketListData> ticketList = <TicketListData>[
+    TicketListData(
       imagePath: 'assets/vole/alitalia.png',
       timeDept: '10:00',
       timeArr: '15:00',
@@ -38,7 +38,20 @@ class TecketListData {
       voleStop: 'NoStop',
       airportStop: '',
     ),
-    TecketListData(
+    TicketListData(
+      imagePath: 'assets/vole/air-algerie.png',
+      timeDept: '10:00',
+      timeArr: '15:00',
+      timeTrip: '5',
+      prix: 120,
+      airportDep: 'CDG',
+      airportArr: 'LND',
+      voleType: 'One way',
+      voleClass: 'Ecomomic',
+      voleStop: 'NoStop',
+      airportStop: '',
+    ),
+    TicketListData(
       imagePath: 'assets/vole/british.png',
       timeDept: '10:00',
       timeArr: '15:00',
@@ -51,7 +64,7 @@ class TecketListData {
       voleStop: 'NoStop',
       airportStop: '',
     ),
-    TecketListData(
+    TicketListData(
       imagePath: 'assets/vole/qatar.png',
       timeDept: '10:00',
       timeArr: '15:00',
@@ -64,7 +77,7 @@ class TecketListData {
       voleStop: 'NoStop',
       airportStop: '',
     ),
-    TecketListData(
+    TicketListData(
       imagePath: 'assets/vole/etihad.png',
       timeDept: '10:00',
       timeArr: '15:00',
@@ -77,7 +90,7 @@ class TecketListData {
       voleStop: 'NoStop',
       airportStop: '',
     ),
-    TecketListData(
+    TicketListData(
       imagePath: 'assets/vole/lufthansa.png',
       timeDept: '10:00',
       timeArr: '15:00',
@@ -90,7 +103,124 @@ class TecketListData {
       voleStop: 'NoStop',
       airportStop: '',
     ),
-    TecketListData(
+    TicketListData(
+      imagePath: 'assets/vole/norwegian.png',
+      timeDept: '10:00',
+      timeArr: '15:00',
+      timeTrip: '5',
+      prix: 120,
+      airportDep: 'CDG',
+      airportArr: 'LND',
+      voleType: 'One way',
+      voleClass: 'Ecomomic',
+      voleStop: 'NoStop',
+      airportStop: '',
+    ),
+    TicketListData(
+      imagePath: 'assets/vole/norwegian.png',
+      timeDept: '10:00',
+      timeArr: '15:00',
+      timeTrip: '5',
+      prix: 120,
+      airportDep: 'CDG',
+      airportArr: 'LND',
+      voleType: 'One way',
+      voleClass: 'Ecomomic',
+      voleStop: 'NoStop',
+      airportStop: '',
+    ),
+    TicketListData(
+      imagePath: 'assets/vole/norwegian.png',
+      timeDept: '10:00',
+      timeArr: '15:00',
+      timeTrip: '5',
+      prix: 120,
+      airportDep: 'CDG',
+      airportArr: 'LND',
+      voleType: 'One way',
+      voleClass: 'Ecomomic',
+      voleStop: 'NoStop',
+      airportStop: '',
+    ),
+    TicketListData(
+      imagePath: 'assets/vole/norwegian.png',
+      timeDept: '10:00',
+      timeArr: '15:00',
+      timeTrip: '5',
+      prix: 120,
+      airportDep: 'CDG',
+      airportArr: 'LND',
+      voleType: 'One way',
+      voleClass: 'Ecomomic',
+      voleStop: 'NoStop',
+      airportStop: '',
+    ),
+    TicketListData(
+      imagePath: 'assets/vole/norwegian.png',
+      timeDept: '10:00',
+      timeArr: '15:00',
+      timeTrip: '5',
+      prix: 120,
+      airportDep: 'CDG',
+      airportArr: 'LND',
+      voleType: 'One way',
+      voleClass: 'Ecomomic',
+      voleStop: 'NoStop',
+      airportStop: '',
+    ),
+    TicketListData(
+      imagePath: 'assets/vole/norwegian.png',
+      timeDept: '10:00',
+      timeArr: '15:00',
+      timeTrip: '5',
+      prix: 120,
+      airportDep: 'CDG',
+      airportArr: 'LND',
+      voleType: 'One way',
+      voleClass: 'Ecomomic',
+      voleStop: 'NoStop',
+      airportStop: '',
+    ),
+    TicketListData(
+      imagePath: 'assets/vole/norwegian.png',
+      timeDept: '10:00',
+      timeArr: '15:00',
+      timeTrip: '5',
+      prix: 120,
+      airportDep: 'CDG',
+      airportArr: 'LND',
+      voleType: 'One way',
+      voleClass: 'Ecomomic',
+      voleStop: 'NoStop',
+      airportStop: '',
+    ),
+    TicketListData(
+      imagePath: 'assets/vole/norwegian.png',
+      timeDept: '10:00',
+      timeArr: '15:00',
+      timeTrip: '5',
+      prix: 120,
+      airportDep: 'CDG',
+      airportArr: 'LND',
+      voleType: 'One way',
+      voleClass: 'Ecomomic',
+      voleStop: 'NoStop',
+      airportStop: '',
+    ),
+    TicketListData(
+      imagePath: 'assets/vole/norwegian.png',
+      timeDept: '10:00',
+      timeArr: '15:00',
+      timeTrip: '5',
+      prix: 120,
+      airportDep: 'CDG',
+      airportArr: 'LND',
+      voleType: 'One way',
+      voleClass: 'Ecomomic',
+      voleStop: 'NoStop',
+      airportStop: '',
+    ),
+    TicketListData(
       imagePath: 'assets/vole/norwegian.png',
       timeDept: '10:00',
       timeArr: '15:00',
