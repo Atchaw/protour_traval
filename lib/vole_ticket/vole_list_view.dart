@@ -1,7 +1,5 @@
-//import 'package:protour_traval/hotel_booking/hotel_app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:protour_traval/app_theme.dart';
 
 import 'model/ticket_list_data.dart';
@@ -31,8 +29,7 @@ class TicketListView extends StatelessWidget {
             transform: Matrix4.translationValues(
                 0.0, 50 * (1.0 - animation.value), 0.0),
             child: Padding(
-              padding:
-                  const EdgeInsets.only(left: 20, right: 20, top: 8, bottom: 8),
+              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 16),
               child: InkWell(
                 splashColor: Colors.transparent,
                 onTap: () {

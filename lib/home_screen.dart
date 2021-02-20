@@ -4,7 +4,7 @@ import 'package:protour_traval/bottom_navigation_view/bottom_bar_view.dart';
 import 'package:protour_traval/app_theme.dart';
 
 import 'package:protour_traval/hotel_booking/hotel_home_screen.dart';
-import 'package:protour_traval/airplane_ticket/ticket_home_screem.dart';
+import 'package:protour_traval/vole_ticket/vole_home_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
