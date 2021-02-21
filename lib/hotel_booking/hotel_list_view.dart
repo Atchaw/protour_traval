@@ -1,4 +1,4 @@
-import 'package:protour_traval/hotel_booking/hotel_app_theme.dart';
+import 'package:protour_traval/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
@@ -62,8 +62,7 @@ class HotelListView extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              color: HotelAppTheme.buildLightTheme()
-                                  .backgroundColor,
+                              color: AppTheme.buildLightTheme().backgroundColor,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,9 +105,9 @@ class HotelListView extends StatelessWidget {
                                                 Icon(
                                                   FontAwesomeIcons.mapMarkerAlt,
                                                   size: 12,
-                                                  color: HotelAppTheme
-                                                          .buildLightTheme()
-                                                      .primaryColor,
+                                                  color:
+                                                      AppTheme.buildLightTheme()
+                                                          .primaryColor,
                                                 ),
                                                 Expanded(
                                                   child: Text(
@@ -133,10 +132,10 @@ class HotelListView extends StatelessWidget {
                                                     starCount: 5,
                                                     rating: hotelData.rating,
                                                     size: 20,
-                                                    color: HotelAppTheme
+                                                    color: AppTheme
                                                             .buildLightTheme()
                                                         .primaryColor,
-                                                    borderColor: HotelAppTheme
+                                                    borderColor: AppTheme
                                                             .buildLightTheme()
                                                         .primaryColor,
                                                   ),
@@ -201,8 +200,8 @@ class HotelListView extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Icon(
                                   Icons.favorite_border,
-                                  color: HotelAppTheme.buildLightTheme()
-                                      .primaryColor,
+                                  color:
+                                      AppTheme.buildLightTheme().primaryColor,
                                 ),
                               ),
                             ),

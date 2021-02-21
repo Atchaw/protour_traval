@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './visa_form.dart';
-import 'package:protour_traval/hotel_booking/hotel_app_theme.dart';
+import 'package:protour_traval/app_theme.dart';
 
 class VisaHomeScreen extends StatefulWidget {
   @override
@@ -28,9 +28,9 @@ class _VisaHomeScreenState extends State<VisaHomeScreen>
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: HotelAppTheme.buildLightTheme(),
+      data: AppTheme.buildLightTheme(),
       child: Container(
-        color: HotelAppTheme.buildLightTheme().backgroundColor,
+        color: AppTheme.buildLightTheme().backgroundColor,
         child: VisaForm(),
       ),
     );

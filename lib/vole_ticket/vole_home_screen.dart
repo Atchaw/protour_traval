@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:protour_traval/vole_ticket/vole_list_view.dart';
 import 'package:protour_traval/vole_ticket/model/ticket_list_data.dart';
 import 'package:flutter/material.dart';
-import 'package:protour_traval/hotel_booking/hotel_app_theme.dart';
 import 'package:protour_traval/app_theme.dart';
 import 'vole_search.dart';
 
@@ -39,7 +38,7 @@ class _TicketHomeScreenState extends State<TicketHomeScreen>
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: HotelAppTheme.buildLightTheme(),
+      data: AppTheme.buildLightTheme(),
       child: Container(
         child: Scaffold(
           body: Stack(
@@ -73,8 +72,7 @@ class _TicketHomeScreenState extends State<TicketHomeScreen>
                           ];
                         },
                         body: Container(
-                          color:
-                              HotelAppTheme.buildLightTheme().backgroundColor,
+                          color: AppTheme.buildLightTheme().backgroundColor,
                           child: ListView.builder(
                             itemCount: ticketList.length,
                             padding: const EdgeInsets.only(top: 8),
@@ -115,7 +113,7 @@ class _TicketHomeScreenState extends State<TicketHomeScreen>
   Widget getListUI() {
     return Container(
       decoration: BoxDecoration(
-        color: HotelAppTheme.buildLightTheme().backgroundColor,
+        color: AppTheme.buildLightTheme().backgroundColor,
         boxShadow: <BoxShadow>[
           BoxShadow(
               color: Colors.grey.withOpacity(0.2),
