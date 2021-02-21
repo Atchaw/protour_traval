@@ -18,9 +18,6 @@ class _TicketHomeScreenState extends State<TicketHomeScreen>
   final ScrollController _scrollController = ScrollController();
   final _formKey = GlobalKey<FormState>();
 
-//  DateTime startDate = DateTime.now();
-//  DateTime endDate = DateTime.now().add(const Duration(days: 5));
-
   @override
   void initState() {
     animationController = AnimationController(
@@ -192,11 +189,6 @@ class _TicketHomeScreenState extends State<TicketHomeScreen>
       children: hotelListViews,
     );
   }
-
-  String dropdownValue_1 = 'One way';
-  String dropdownValue_2 = 'Economic';
-  String dropdownValue_3 = 'Algeria';
-  String dropdownValue_4 = '15-Jan-2020';
 /*
   Widget getSearchBarUI() {
     return Form(

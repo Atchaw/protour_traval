@@ -5,6 +5,8 @@ import 'package:protour_traval/app_theme.dart';
 
 import 'package:protour_traval/hotel_booking/hotel_home_screen.dart';
 import 'package:protour_traval/vole_ticket/vole_home_screen.dart';
+import 'package:protour_traval/visa/visa_home_screen.dart';
+import 'package:protour_traval/assurance/assurance_home_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -127,7 +129,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 }
                 setState(() {
                   tabBody = HotelHomeScreen();
-                  //TrainingScreen(animationController: animationController);
                 });
               });
             } else if (index == 2) {
@@ -137,7 +138,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 }
                 setState(() {
                   tabBody = TicketHomeScreen();
-                  //TrainingScreen(animationController: animationController);
                 });
               });
             } else if (index == 3) {
@@ -146,8 +146,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   return;
                 }
                 setState(() {
-                  // tabBody = HotelHomeScreen();
-                  //TrainingScreen(animationController: animationController);
+                  tabBody = VisaHomeScreen();
                 });
               });
             } else if (index == 4) {
@@ -156,8 +155,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   return;
                 }
                 setState(() {
-                  // tabBody = HotelHomeScreen();
-                  //TrainingScreen(animationController: animationController);
+                  tabBody = AssuranceHomeScreen();
                 });
               });
             }

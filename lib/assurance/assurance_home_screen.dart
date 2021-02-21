@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import './visa_form.dart';
+import './assurance_form.dart';
 import 'package:protour_traval/hotel_booking/hotel_app_theme.dart';
 
-class VisaHomeScreen extends StatefulWidget {
+class AssuranceHomeScreen extends StatefulWidget {
   @override
-  _VisaHomeScreenState createState() => _VisaHomeScreenState();
+  _AssuranceHomeScreenState createState() => _AssuranceHomeScreenState();
 }
 
-class _VisaHomeScreenState extends State<VisaHomeScreen>
+class _AssuranceHomeScreenState extends State<AssuranceHomeScreen>
     with TickerProviderStateMixin {
   AnimationController animationController;
   final ScrollController _scrollController = ScrollController();
@@ -31,7 +31,7 @@ class _VisaHomeScreenState extends State<VisaHomeScreen>
       data: HotelAppTheme.buildLightTheme(),
       child: Container(
         color: HotelAppTheme.buildLightTheme().backgroundColor,
-        child: VisaForm(),
+        child: AssuranceForm(),
       ),
     );
   }

@@ -87,6 +87,11 @@ class SearchVoleForm extends StatelessWidget {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
+                contentPadding: const EdgeInsets.only(left: 12),
+                alignLabelWithHint: true,
+                labelStyle: TextStyle(
+                  fontSize: 14,
+                ),
               ),
             ),
             child: Container(
@@ -111,15 +116,12 @@ class SearchVoleForm extends StatelessWidget {
                 child: SingleChildScrollView(
                   physics: ClampingScrollPhysics(),
                   child: Container(
-                    //color: Colors.grey.withOpacity(0.1),
-
                     child: Column(
-                      //crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       verticalDirection: VerticalDirection.down,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.all(4.0),
+                          padding: const EdgeInsets.only(left: 4, right: 4),
                           child: Row(
                             children: <Widget>[
                               Expanded(
@@ -130,23 +132,6 @@ class SearchVoleForm extends StatelessWidget {
                                   ),
                                   itemBuilder: (context, value) => value,
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 4,
-                              ),
-                              Container(
-                                width: 90,
-                                child: TextFieldBlocBuilder(
-                                  textFieldBloc: searchFormBloc.numberPerssonne,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(
-                                    //labelText: 'Email',
-                                    prefixIcon: Icon(Icons.person),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 4,
                               ),
                               Expanded(
                                 child: DropdownFieldBlocBuilder(
@@ -173,8 +158,15 @@ class SearchVoleForm extends StatelessWidget {
                                   itemBuilder: (context, value) => value,
                                 ),
                               ),
-                              const SizedBox(
-                                width: 4,
+                              Container(
+                                width: 80,
+                                child: TextFieldBlocBuilder(
+                                  textFieldBloc: searchFormBloc.numberPerssonne,
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                    prefixIcon: Icon(Icons.person),
+                                  ),
+                                ),
                               ),
                               Expanded(
                                 child: DropdownFieldBlocBuilder(
@@ -201,13 +193,17 @@ class SearchVoleForm extends StatelessWidget {
                                   lastDate: DateTime(2100),
                                   decoration: InputDecoration(
                                     labelText: 'Date Aller',
-                                    //   prefixIcon: Icon(Icons.calendar_today),
+                                    prefixIcon: Icon(Icons.calendar_today),
                                   ),
                                 ),
                               ),
-                              const SizedBox(
-                                width: 4,
-                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 4, right: 4),
+                          child: Row(
+                            children: <Widget>[
                               Expanded(
                                 child: DateTimeFieldBlocBuilder(
                                   dateTimeFieldBloc: searchFormBloc.date2,
@@ -217,13 +213,14 @@ class SearchVoleForm extends StatelessWidget {
                                   lastDate: DateTime(2100),
                                   decoration: InputDecoration(
                                     labelText: 'Date Retour',
-                                    // prefixIcon: Icon(Icons.calendar_today),
+                                    prefixIcon: Icon(Icons.calendar_today),
                                   ),
                                 ),
                               ),
                             ],
                           ),
                         ),
+                        /*
                         Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Container(
@@ -242,6 +239,7 @@ class SearchVoleForm extends StatelessWidget {
                             ),
                           ),
                         ),
+                      */
                       ],
                     ),
                   ),
