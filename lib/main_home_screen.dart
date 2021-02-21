@@ -7,13 +7,15 @@ import 'package:protour_traval/hotel_booking/hotel_home_screen.dart';
 import 'package:protour_traval/vole_ticket/vole_home_screen.dart';
 import 'package:protour_traval/visa/visa_home_screen.dart';
 import 'package:protour_traval/assurance/assurance_home_screen.dart';
+import 'package:protour_traval/home/home_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class MainHomeScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _MainHomeScreenState createState() => _MainHomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+class _MainHomeScreenState extends State<MainHomeScreen>
+    with TickerProviderStateMixin {
   AnimationController animationController;
 
   List<TabIconData> tabIconsList = TabIconData.tabIconsList;
@@ -31,8 +33,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    //tabBody =
-    //MyDiaryScreen(animationController: animationController);
+    tabBody = HomeScreen();
     super.initState();
   }
 
@@ -118,8 +119,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   return;
                 }
                 setState(() {
-                  //tabBody = null;
-                  //  MyDiaryScreen(animationController: animationController);
+                  tabBody = HomeScreen();
                 });
               });
             } else if (index == 1) {

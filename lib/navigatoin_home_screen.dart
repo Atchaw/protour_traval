@@ -1,7 +1,7 @@
 import 'package:protour_traval/app_theme.dart';
 import 'package:protour_traval/custom_drawer/home_drawer.dart';
 import 'package:protour_traval/custom_drawer/drawer_user_controller.dart';
-import 'package:protour_traval/home_screen.dart';
+import 'package:protour_traval/main_home_screen.dart';
 import 'package:flutter/material.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
   @override
   void initState() {
     drawerIndex = DrawerIndex.HOME;
-    screenView = HomeScreen();
+    screenView = MainHomeScreen();
     super.initState();
   }
 
@@ -49,7 +49,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
       drawerIndex = drawerIndexdata;
       if (drawerIndex == DrawerIndex.HOME) {
         setState(() {
-          screenView = HomeScreen();
+          screenView = MainHomeScreen();
         });
       } else if (drawerIndex == DrawerIndex.Help) {
         setState(() {

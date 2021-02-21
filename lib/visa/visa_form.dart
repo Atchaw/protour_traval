@@ -1,11 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:protour_traval/navigatoin_home_screen.dart';
 
 class VisaFormBloc extends FormBloc<String, String> {
-  final username = TextFieldBloc(
+  //--------------------------Bloc 2 ---------------
+  final country = SelectFieldBloc(
+    items: ['France', 'Egypts', 'Turck'],
+    validators: [FieldBlocValidators.required],
+  );
+  final visaType = SelectFieldBloc(
+    items: ['Electronic', 'Normal'],
+    validators: [FieldBlocValidators.required],
+  );
+  final travelDate = InputFieldBloc<DateTime, Object>(
+    validators: [FieldBlocValidators.required],
+  );
+  final personnNumber = TextFieldBloc(
+    validators: [FieldBlocValidators.required],
+  );
+  final travelDocumet = SelectFieldBloc(
+    items: ['passport ordinaire'],
     validators: [FieldBlocValidators.required],
   );
 
+  final nationalty = SelectFieldBloc(
+    items: ['Algerian'],
+    validators: [FieldBlocValidators.required],
+    initialValue: 'Algerian',
+  );
+//--------------------------Bloc 2 ---------------
+  final firstName = TextFieldBloc(
+    validators: [FieldBlocValidators.required],
+  );
+
+  final lastName = TextFieldBloc(
+    validators: [FieldBlocValidators.required],
+  );
+
+  final birthPlace = TextFieldBloc(
+    validators: [FieldBlocValidators.required],
+  );
+
+  final birthDate = InputFieldBloc<DateTime, Object>(
+    validators: [
+      FieldBlocValidators.required,
+    ],
+  );
+
+  final passportNumber = TextFieldBloc(
+    validators: [FieldBlocValidators.required],
+  );
+
+  final dateDelivrance = InputFieldBloc<DateTime, Object>(
+    validators: [FieldBlocValidators.required],
+  );
+  final dateExpiration = InputFieldBloc<DateTime, Object>(
+    validators: [FieldBlocValidators.required],
+  );
   final email = TextFieldBloc(
     validators: [
       FieldBlocValidators.required,
@@ -13,67 +64,51 @@ class VisaFormBloc extends FormBloc<String, String> {
     ],
   );
 
-  final password = TextFieldBloc(
-    validators: [
-      FieldBlocValidators.required,
-      FieldBlocValidators.passwordMin6Chars,
-    ],
-  );
-
-  final firstName = TextFieldBloc();
-
-  final lastName = TextFieldBloc();
-
-  final gender = SelectFieldBloc(
-    items: ['Male', 'Female'],
-  );
-
-  final birthDate = InputFieldBloc<DateTime, Object>(
-    validators: [FieldBlocValidators.required],
-  );
-
-  final github = TextFieldBloc();
-
-  final twitter = TextFieldBloc();
-
-  final facebook = TextFieldBloc();
+//--------------------------Bloc 3 ---------------
+  final codition = BooleanFieldBloc();
 
   VisaFormBloc() {
     addFieldBlocs(
       step: 0,
-      fieldBlocs: [username, email, password],
+      fieldBlocs: [
+        country,
+        visaType,
+        travelDate,
+        personnNumber,
+        travelDocumet,
+        nationalty
+      ],
     );
     addFieldBlocs(
       step: 1,
-      fieldBlocs: [firstName, lastName, gender, birthDate],
+      fieldBlocs: [
+        firstName,
+        lastName,
+        birthPlace,
+        birthDate,
+        passportNumber,
+        dateDelivrance,
+        dateExpiration,
+        email
+      ],
     );
     addFieldBlocs(
       step: 2,
-      fieldBlocs: [github, twitter, facebook],
+      fieldBlocs: [codition],
     );
   }
 
-  bool _showEmailTakenError = true;
+  //bool _showEmailTakenError = true;
 
   @override
   void onSubmitting() async {
     if (state.currentStep == 0) {
       await Future.delayed(Duration(milliseconds: 500));
-
-      if (_showEmailTakenError) {
-        _showEmailTakenError = false;
-
-        email.addFieldError('That email is already taken');
-
-        emitFailure();
-      } else {
-        emitSuccess();
-      }
+      emitSuccess();
     } else if (state.currentStep == 1) {
       emitSuccess();
     } else if (state.currentStep == 2) {
       await Future.delayed(Duration(milliseconds: 500));
-
       emitSuccess();
     }
   }
@@ -142,9 +177,9 @@ class _VisaFormState extends State<VisaForm> {
                     physics: ClampingScrollPhysics(),
                     stepsBuilder: (formBloc) {
                       return [
-                        _accountStep(formBloc),
+                        _visaStep(formBloc),
                         _personalStep(formBloc),
-                        _socialStep(formBloc),
+                        _conditionStep(formBloc),
                       ];
                     },
                   ),
@@ -157,36 +192,58 @@ class _VisaFormState extends State<VisaForm> {
     );
   }
 
-  FormBlocStep _accountStep(VisaFormBloc visaFormBloc) {
+  FormBlocStep _visaStep(VisaFormBloc visaFormBloc) {
     return FormBlocStep(
-      title: Text('Account'),
+      title: Text('Visa'),
       content: Column(
         children: <Widget>[
-          TextFieldBlocBuilder(
-            textFieldBloc: visaFormBloc.username,
-            keyboardType: TextInputType.emailAddress,
-            enableOnlyWhenFormBlocCanSubmit: true,
+          DropdownFieldBlocBuilder(
+            selectFieldBloc: visaFormBloc.country,
             decoration: InputDecoration(
-              labelText: 'Username',
+              labelText: 'Pays',
+              prefixIcon: Icon(Icons.location_on),
+            ),
+            itemBuilder: (context, value) => value,
+          ),
+          DropdownFieldBlocBuilder(
+            selectFieldBloc: visaFormBloc.visaType,
+            decoration: InputDecoration(
+              labelText: 'Type de visa',
+            ),
+            itemBuilder: (context, value) => value,
+          ),
+          DateTimeFieldBlocBuilder(
+            dateTimeFieldBloc: visaFormBloc.travelDate,
+            format: DateFormat('dd-MM-yyyy'),
+            initialDate: DateTime.now(),
+            firstDate: DateTime.now(),
+            lastDate: DateTime(2100),
+            decoration: InputDecoration(
+              labelText: 'Date debut du voyage',
+              prefixIcon: Icon(Icons.calendar_today),
+            ),
+          ),
+          TextFieldBlocBuilder(
+            textFieldBloc: visaFormBloc.personnNumber,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: 'Nombre de personne',
               prefixIcon: Icon(Icons.person),
             ),
           ),
-          TextFieldBlocBuilder(
-            textFieldBloc: visaFormBloc.email,
-            keyboardType: TextInputType.emailAddress,
+          DropdownFieldBlocBuilder(
+            selectFieldBloc: visaFormBloc.travelDocumet,
             decoration: InputDecoration(
-              labelText: 'Email',
-              prefixIcon: Icon(Icons.email),
+              labelText: 'Document de voyage',
             ),
+            itemBuilder: (context, value) => value,
           ),
-          TextFieldBlocBuilder(
-            textFieldBloc: visaFormBloc.password,
-            keyboardType: TextInputType.emailAddress,
-            suffixButton: SuffixButton.obscureText,
+          DropdownFieldBlocBuilder(
+            selectFieldBloc: visaFormBloc.nationalty,
             decoration: InputDecoration(
-              labelText: 'Password',
-              prefixIcon: Icon(Icons.lock),
+              labelText: 'Nationality',
             ),
+            itemBuilder: (context, value) => value,
           ),
         ],
       ),
@@ -202,7 +259,7 @@ class _VisaFormState extends State<VisaForm> {
             textFieldBloc: visaFormBloc.firstName,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              labelText: 'First Name',
+              labelText: 'Prenome',
               prefixIcon: Icon(Icons.person),
             ),
           ),
@@ -210,16 +267,16 @@ class _VisaFormState extends State<VisaForm> {
             textFieldBloc: visaFormBloc.lastName,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              labelText: 'Last Name',
+              labelText: 'Nome de la famille',
               prefixIcon: Icon(Icons.person),
             ),
           ),
-          RadioButtonGroupFieldBlocBuilder<String>(
-            selectFieldBloc: visaFormBloc.gender,
-            itemBuilder: (context, value) => value,
+          TextFieldBlocBuilder(
+            textFieldBloc: visaFormBloc.birthPlace,
+            keyboardType: TextInputType.text,
             decoration: InputDecoration(
-              labelText: 'Gender',
-              prefixIcon: SizedBox(),
+              labelText: 'Lieu de naissance',
+              prefixIcon: Icon(Icons.cake),
             ),
           ),
           DateTimeFieldBlocBuilder(
@@ -227,10 +284,48 @@ class _VisaFormState extends State<VisaForm> {
             firstDate: DateTime(1900),
             initialDate: DateTime.now(),
             lastDate: DateTime.now(),
-            format: DateFormat('yyyy-MM-dd'),
+            format: DateFormat('dd-MM-yyyy'),
             decoration: InputDecoration(
-              labelText: 'Date of Birth',
+              labelText: 'Date de naissance',
               prefixIcon: Icon(Icons.cake),
+            ),
+          ),
+          TextFieldBlocBuilder(
+            textFieldBloc: visaFormBloc.passportNumber,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: 'Numero de passeport',
+              prefixIcon: Icon(Icons.person),
+            ),
+          ),
+          DateTimeFieldBlocBuilder(
+            dateTimeFieldBloc: visaFormBloc.dateDelivrance,
+            format: DateFormat('dd-MM-yyyy'),
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1900),
+            lastDate: DateTime.now(),
+            decoration: InputDecoration(
+              labelText: 'Date delivration',
+              prefixIcon: Icon(Icons.calendar_today),
+            ),
+          ),
+          DateTimeFieldBlocBuilder(
+            dateTimeFieldBloc: visaFormBloc.dateExpiration,
+            format: DateFormat('dd-MM-yyyy'),
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1900),
+            lastDate: DateTime(2100),
+            decoration: InputDecoration(
+              labelText: 'Date d\' expiration',
+              prefixIcon: Icon(Icons.calendar_today),
+            ),
+          ),
+          TextFieldBlocBuilder(
+            textFieldBloc: visaFormBloc.email,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              labelText: 'Email',
+              prefixIcon: Icon(Icons.email),
             ),
           ),
         ],
@@ -238,33 +333,17 @@ class _VisaFormState extends State<VisaForm> {
     );
   }
 
-  FormBlocStep _socialStep(VisaFormBloc visaFormBloc) {
+  FormBlocStep _conditionStep(VisaFormBloc visaFormBloc) {
     return FormBlocStep(
-      title: Text('Social'),
+      title: Text('Condition'),
       content: Column(
         children: <Widget>[
-          TextFieldBlocBuilder(
-            textFieldBloc: visaFormBloc.github,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              labelText: 'Github',
-              prefixIcon: Icon(Icons.sentiment_satisfied),
-            ),
-          ),
-          TextFieldBlocBuilder(
-            textFieldBloc: visaFormBloc.twitter,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              labelText: 'Twitter',
-              prefixIcon: Icon(Icons.sentiment_satisfied),
-            ),
-          ),
-          TextFieldBlocBuilder(
-            textFieldBloc: visaFormBloc.facebook,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              labelText: 'Facebook',
-              prefixIcon: Icon(Icons.sentiment_satisfied),
+          CheckboxFieldBlocBuilder(
+            booleanFieldBloc: visaFormBloc.codition,
+            body: Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                  'J\'accepte les conditions generale de la demande de visa'),
             ),
           ),
         ],
@@ -323,9 +402,9 @@ class SuccessScreen extends StatelessWidget {
             SizedBox(height: 10),
             RaisedButton.icon(
               onPressed: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => VisaForm())),
+                  MaterialPageRoute(builder: (_) => NavigationHomeScreen())),
               icon: Icon(Icons.replay),
-              label: Text('AGAIN'),
+              label: Text('Return To Home'),
             ),
           ],
         ),
