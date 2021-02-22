@@ -4,6 +4,7 @@ import 'package:protour_traval/hotel_booking/model/hotel_list_data.dart';
 import 'package:flutter/material.dart';
 import 'package:protour_traval/app_theme.dart';
 import 'filters_screen.dart';
+import './info_screen.dart';
 
 class HotelHomeScreen extends StatefulWidget {
   @override
@@ -91,7 +92,9 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                                               curve: Curves.fastOutSlowIn)));
                               animationController.forward();
                               return HotelListView(
-                                callback: () {},
+                                callback: () {
+                                  moveTo();
+                                },
                                 hotelData: hotelList[index],
                                 animation: animation,
                                 animationController: animationController,
@@ -301,29 +304,14 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     );
   }
 
-/*
-  void showDemoDialog({BuildContext context}) {
-    showDialog<dynamic>(
-      context: context,
-      builder: (BuildContext context) => CalendarPopupView(
-        barrierDismissible: true,
-        minimumDate: DateTime.now(),
-        //  maximumDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 10),
-        initialEndDate: endDate,
-        initialStartDate: startDate,
-        onApplyClick: (DateTime startData, DateTime endData) {
-          setState(() {
-            if (startData != null && endData != null) {
-              startDate = startData;
-              endDate = endData;
-            }
-          });
-        },
-        onCancelClick: () {},
+  void moveTo() {
+    Navigator.push<dynamic>(
+      context,
+      MaterialPageRoute<dynamic>(
+        builder: (BuildContext context) => InfoScreen(),
       ),
     );
   }
-*/
 }
 
 class ContestTabHeader extends SliverPersistentHeaderDelegate {

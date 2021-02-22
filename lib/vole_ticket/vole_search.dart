@@ -83,15 +83,18 @@ class SearchVoleForm extends StatelessWidget {
 
           return Theme(
             data: Theme.of(context).copyWith(
+              textTheme: TextTheme(
+                subtitle1: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.black,
+                ),
+              ),
               inputDecorationTheme: InputDecorationTheme(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                contentPadding: const EdgeInsets.only(left: 12),
+                contentPadding: const EdgeInsets.all(0),
                 alignLabelWithHint: true,
-                labelStyle: TextStyle(
-                  fontSize: 14,
-                ),
               ),
             ),
             child: Container(
@@ -128,15 +131,31 @@ class SearchVoleForm extends StatelessWidget {
                                 child: DropdownFieldBlocBuilder(
                                   selectFieldBloc: searchFormBloc.select1,
                                   decoration: InputDecoration(
+                                    contentPadding:
+                                        const EdgeInsets.only(left: 20),
                                     labelText: 'Type',
                                   ),
                                   itemBuilder: (context, value) => value,
                                 ),
                               ),
+                              SizedBox(width: 4),
+                              Container(
+                                width: 80,
+                                child: TextFieldBlocBuilder(
+                                  textFieldBloc: searchFormBloc.numberPerssonne,
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                    prefixIcon: Icon(Icons.person),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 4),
                               Expanded(
                                 child: DropdownFieldBlocBuilder(
                                   selectFieldBloc: searchFormBloc.select2,
                                   decoration: InputDecoration(
+                                    contentPadding:
+                                        const EdgeInsets.only(left: 20),
                                     labelText: 'Type1',
                                   ),
                                   itemBuilder: (context, value) => value,
@@ -154,25 +173,18 @@ class SearchVoleForm extends StatelessWidget {
                                   selectFieldBloc: searchFormBloc.select3,
                                   decoration: InputDecoration(
                                     labelText: 'Depart',
+                                    prefixIcon: Icon(Icons.location_on),
                                   ),
                                   itemBuilder: (context, value) => value,
                                 ),
                               ),
-                              Container(
-                                width: 80,
-                                child: TextFieldBlocBuilder(
-                                  textFieldBloc: searchFormBloc.numberPerssonne,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.person),
-                                  ),
-                                ),
-                              ),
+                              SizedBox(width: 4),
                               Expanded(
                                 child: DropdownFieldBlocBuilder(
                                   selectFieldBloc: searchFormBloc.select4,
                                   decoration: InputDecoration(
                                     labelText: 'Arrived',
+                                    prefixIcon: Icon(Icons.location_on),
                                   ),
                                   itemBuilder: (context, value) => value,
                                 ),
@@ -197,13 +209,7 @@ class SearchVoleForm extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 4, right: 4),
-                          child: Row(
-                            children: <Widget>[
+                              SizedBox(width: 4),
                               Expanded(
                                 child: DateTimeFieldBlocBuilder(
                                   dateTimeFieldBloc: searchFormBloc.date2,
@@ -220,12 +226,12 @@ class SearchVoleForm extends StatelessWidget {
                             ],
                           ),
                         ),
-                        /*
                         Padding(
-                          padding: const EdgeInsets.all(4.0),
+                          padding: const EdgeInsets.only(
+                              top: 4, left: 4, right: 4, bottom: 0),
                           child: Container(
-                            height: 55,
-                            width: 500,
+                            height: 45,
+                            width: double.infinity,
                             child: RaisedButton(
                               onPressed: searchFormBloc.submit,
                               child: Text(
@@ -239,7 +245,6 @@ class SearchVoleForm extends StatelessWidget {
                             ),
                           ),
                         ),
-                      */
                       ],
                     ),
                   ),
