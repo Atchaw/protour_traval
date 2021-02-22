@@ -42,6 +42,9 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     return Theme(
       data: AppTheme.buildLightTheme(),
       child: Container(
+        padding: EdgeInsets.only(
+          bottom: 62 + MediaQuery.of(context).padding.bottom,
+        ),
         child: Scaffold(
           body: Stack(
             children: <Widget>[

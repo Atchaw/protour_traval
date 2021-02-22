@@ -40,6 +40,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return Theme(
       data: AppTheme.buildLightTheme(),
       child: Container(
+        padding: EdgeInsets.only(
+          bottom: 62 + MediaQuery.of(context).padding.bottom,
+        ),
         child: Scaffold(
           body: Stack(
             children: <Widget>[
@@ -189,9 +192,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   Widget getSearchBarUI() {
     return Container(
-      color: AppTheme.white,
+      color: AppTheme.background,
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.only(top: 10.0),
         child: AddsView(),
       ),
     );

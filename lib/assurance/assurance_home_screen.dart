@@ -30,6 +30,9 @@ class _AssuranceHomeScreenState extends State<AssuranceHomeScreen>
     return Theme(
       data: AppTheme.buildLightTheme(),
       child: Container(
+        padding: EdgeInsets.only(
+          bottom: 62 + MediaQuery.of(context).padding.bottom,
+        ),
         color: AppTheme.buildLightTheme().backgroundColor,
         child: AssuranceForm(),
       ),

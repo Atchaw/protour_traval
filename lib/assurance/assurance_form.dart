@@ -59,17 +59,9 @@ class AssuranceFormBloc extends FormBloc<String, String> {
   void onSubmitting() async {
     if (state.currentStep == 0) {
       await Future.delayed(Duration(milliseconds: 500));
-
-      if (_showEmailTakenError) {
-        _showEmailTakenError = false;
-
-        email.addFieldError('That email is already taken');
-
-        emitFailure();
-      } else {
-        emitSuccess();
-      }
+      emitSuccess();
     } else if (state.currentStep == 1) {
+      await Future.delayed(Duration(milliseconds: 500));
       emitSuccess();
     } else if (state.currentStep == 2) {
       await Future.delayed(Duration(milliseconds: 500));
