@@ -1,59 +1,93 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:protour_traval/navigatoin_home_screen.dart';
 
 class AssuranceFormBloc extends FormBloc<String, String> {
-  final username = TextFieldBloc(
+  //--------------------------Bloc 2 ---------------
+  final country = TextFieldBloc(
+    validators: [FieldBlocValidators.required],
+  );
+  final assuranceDuration = TextFieldBloc(
+    validators: [FieldBlocValidators.required],
+  );
+  final travelDate = InputFieldBloc<DateTime, Object>(
+    validators: [FieldBlocValidators.required],
+  );
+  final personnNumber = TextFieldBloc(
+    validators: [FieldBlocValidators.required],
+  );
+  final travelDocumet = SelectFieldBloc(
+    items: ['passport ordinaire'],
     validators: [FieldBlocValidators.required],
   );
 
+  final nationalty = SelectFieldBloc(
+    items: ['Algerian'],
+    validators: [FieldBlocValidators.required],
+    initialValue: 'Algerian',
+  );
+//--------------------------Bloc 2 ---------------
+  final firstName = TextFieldBloc(
+    validators: [FieldBlocValidators.required],
+  );
+  final lastName = TextFieldBloc(
+    validators: [FieldBlocValidators.required],
+  );
+  final birthPlace = TextFieldBloc(
+    validators: [FieldBlocValidators.required],
+  );
+  final birthDate = InputFieldBloc<DateTime, Object>(
+    validators: [FieldBlocValidators.required],
+  );
+  final passportNumber = TextFieldBloc(
+    validators: [FieldBlocValidators.required],
+  );
+
+  final dateDelivrance = InputFieldBloc<DateTime, Object>(
+    validators: [FieldBlocValidators.required],
+  );
+  final dateExpiration = InputFieldBloc<DateTime, Object>(
+    validators: [FieldBlocValidators.required],
+  );
   final email = TextFieldBloc(
     validators: [
       FieldBlocValidators.required,
       FieldBlocValidators.email,
     ],
   );
-
-  final password = TextFieldBloc(
-    validators: [
-      FieldBlocValidators.required,
-      FieldBlocValidators.passwordMin6Chars,
-    ],
-  );
-
-  final firstName = TextFieldBloc();
-
-  final lastName = TextFieldBloc();
-
-  final gender = SelectFieldBloc(
-    items: ['Male', 'Female'],
-  );
-
-  final birthDate = InputFieldBloc<DateTime, Object>(
-    validators: [FieldBlocValidators.required],
-  );
-
-  final github = TextFieldBloc();
-
-  final twitter = TextFieldBloc();
-
-  final facebook = TextFieldBloc();
+//--------------------------Bloc 3 ---------------
+  final codition = BooleanFieldBloc();
 
   AssuranceFormBloc() {
     addFieldBlocs(
       step: 0,
-      fieldBlocs: [username, email, password],
+      fieldBlocs: [
+        country,
+        assuranceDuration,
+        travelDate,
+        personnNumber,
+        travelDocumet,
+        nationalty
+      ],
     );
     addFieldBlocs(
       step: 1,
-      fieldBlocs: [firstName, lastName, gender, birthDate],
+      fieldBlocs: [
+        firstName,
+        lastName,
+        birthPlace,
+        birthDate,
+        passportNumber,
+        dateDelivrance,
+        dateExpiration,
+        email
+      ],
     );
     addFieldBlocs(
       step: 2,
-      fieldBlocs: [github, twitter, facebook],
+      fieldBlocs: [codition],
     );
   }
-
-  bool _showEmailTakenError = true;
 
   @override
   void onSubmitting() async {
@@ -65,7 +99,6 @@ class AssuranceFormBloc extends FormBloc<String, String> {
       emitSuccess();
     } else if (state.currentStep == 2) {
       await Future.delayed(Duration(milliseconds: 500));
-
       emitSuccess();
     }
   }
@@ -134,9 +167,9 @@ class _AssuranceFormState extends State<AssuranceForm> {
                     physics: ClampingScrollPhysics(),
                     stepsBuilder: (formBloc) {
                       return [
-                        _accountStep(formBloc),
+                        _visaStep(formBloc),
                         _personalStep(formBloc),
-                        _socialStep(formBloc),
+                        _conditionStep(formBloc),
                       ];
                     },
                   ),
@@ -149,36 +182,58 @@ class _AssuranceFormState extends State<AssuranceForm> {
     );
   }
 
-  FormBlocStep _accountStep(AssuranceFormBloc assuranceFormBloc) {
+  FormBlocStep _visaStep(AssuranceFormBloc assuranceFormBloc) {
     return FormBlocStep(
-      title: Text('Account'),
+      title: Text('Visa'),
       content: Column(
         children: <Widget>[
           TextFieldBlocBuilder(
-            textFieldBloc: assuranceFormBloc.username,
-            keyboardType: TextInputType.emailAddress,
-            enableOnlyWhenFormBlocCanSubmit: true,
+            textFieldBloc: assuranceFormBloc.country,
+            keyboardType: TextInputType.text,
             decoration: InputDecoration(
-              labelText: 'Username',
+              labelText: 'Pays',
+              prefixIcon: Icon(Icons.location_on),
+            ),
+          ),
+          TextFieldBlocBuilder(
+            textFieldBloc: assuranceFormBloc.assuranceDuration,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: 'Durée par jour',
+            ),
+          ),
+          DateTimeFieldBlocBuilder(
+            dateTimeFieldBloc: assuranceFormBloc.travelDate,
+            format: DateFormat('dd-MM-yyyy'),
+            initialDate: DateTime.now(),
+            firstDate: DateTime.now(),
+            lastDate: DateTime(2100),
+            decoration: InputDecoration(
+              labelText: 'Date debut du voyage',
+              prefixIcon: Icon(Icons.calendar_today),
+            ),
+          ),
+          TextFieldBlocBuilder(
+            textFieldBloc: assuranceFormBloc.personnNumber,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: 'Nombre de personne',
               prefixIcon: Icon(Icons.person),
             ),
           ),
-          TextFieldBlocBuilder(
-            textFieldBloc: assuranceFormBloc.email,
-            keyboardType: TextInputType.emailAddress,
+          DropdownFieldBlocBuilder(
+            selectFieldBloc: assuranceFormBloc.travelDocumet,
             decoration: InputDecoration(
-              labelText: 'Email',
-              prefixIcon: Icon(Icons.email),
+              labelText: 'Document de voyage',
             ),
+            itemBuilder: (context, value) => value,
           ),
-          TextFieldBlocBuilder(
-            textFieldBloc: assuranceFormBloc.password,
-            keyboardType: TextInputType.emailAddress,
-            suffixButton: SuffixButton.obscureText,
+          DropdownFieldBlocBuilder(
+            selectFieldBloc: assuranceFormBloc.nationalty,
             decoration: InputDecoration(
-              labelText: 'Password',
-              prefixIcon: Icon(Icons.lock),
+              labelText: 'Nationality',
             ),
+            itemBuilder: (context, value) => value,
           ),
         ],
       ),
@@ -194,7 +249,7 @@ class _AssuranceFormState extends State<AssuranceForm> {
             textFieldBloc: assuranceFormBloc.firstName,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              labelText: 'First Name',
+              labelText: 'Prenome',
               prefixIcon: Icon(Icons.person),
             ),
           ),
@@ -202,16 +257,16 @@ class _AssuranceFormState extends State<AssuranceForm> {
             textFieldBloc: assuranceFormBloc.lastName,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              labelText: 'Last Name',
+              labelText: 'Nome de la famille',
               prefixIcon: Icon(Icons.person),
             ),
           ),
-          RadioButtonGroupFieldBlocBuilder<String>(
-            selectFieldBloc: assuranceFormBloc.gender,
-            itemBuilder: (context, value) => value,
+          TextFieldBlocBuilder(
+            textFieldBloc: assuranceFormBloc.birthPlace,
+            keyboardType: TextInputType.text,
             decoration: InputDecoration(
-              labelText: 'Gender',
-              prefixIcon: SizedBox(),
+              labelText: 'Lieu de naissance',
+              prefixIcon: Icon(Icons.cake),
             ),
           ),
           DateTimeFieldBlocBuilder(
@@ -219,10 +274,48 @@ class _AssuranceFormState extends State<AssuranceForm> {
             firstDate: DateTime(1900),
             initialDate: DateTime.now(),
             lastDate: DateTime.now(),
-            format: DateFormat('yyyy-MM-dd'),
+            format: DateFormat('dd-MM-yyyy'),
             decoration: InputDecoration(
-              labelText: 'Date of Birth',
+              labelText: 'Date de naissance',
               prefixIcon: Icon(Icons.cake),
+            ),
+          ),
+          TextFieldBlocBuilder(
+            textFieldBloc: assuranceFormBloc.passportNumber,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: 'Numero de passeport',
+              prefixIcon: Icon(Icons.person),
+            ),
+          ),
+          DateTimeFieldBlocBuilder(
+            dateTimeFieldBloc: assuranceFormBloc.dateDelivrance,
+            format: DateFormat('dd-MM-yyyy'),
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1900),
+            lastDate: DateTime.now(),
+            decoration: InputDecoration(
+              labelText: 'Date delivration',
+              prefixIcon: Icon(Icons.calendar_today),
+            ),
+          ),
+          DateTimeFieldBlocBuilder(
+            dateTimeFieldBloc: assuranceFormBloc.dateExpiration,
+            format: DateFormat('dd-MM-yyyy'),
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1900),
+            lastDate: DateTime(2100),
+            decoration: InputDecoration(
+              labelText: 'Date d\' expiration',
+              prefixIcon: Icon(Icons.calendar_today),
+            ),
+          ),
+          TextFieldBlocBuilder(
+            textFieldBloc: assuranceFormBloc.email,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              labelText: 'Email',
+              prefixIcon: Icon(Icons.email),
             ),
           ),
         ],
@@ -230,33 +323,17 @@ class _AssuranceFormState extends State<AssuranceForm> {
     );
   }
 
-  FormBlocStep _socialStep(AssuranceFormBloc assuranceFormBloc) {
+  FormBlocStep _conditionStep(AssuranceFormBloc assuranceFormBloc) {
     return FormBlocStep(
-      title: Text('Social'),
+      title: Text('Condition'),
       content: Column(
         children: <Widget>[
-          TextFieldBlocBuilder(
-            textFieldBloc: assuranceFormBloc.github,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              labelText: 'Github',
-              prefixIcon: Icon(Icons.sentiment_satisfied),
-            ),
-          ),
-          TextFieldBlocBuilder(
-            textFieldBloc: assuranceFormBloc.twitter,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              labelText: 'Twitter',
-              prefixIcon: Icon(Icons.sentiment_satisfied),
-            ),
-          ),
-          TextFieldBlocBuilder(
-            textFieldBloc: assuranceFormBloc.facebook,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              labelText: 'Facebook',
-              prefixIcon: Icon(Icons.sentiment_satisfied),
+          CheckboxFieldBlocBuilder(
+            booleanFieldBloc: assuranceFormBloc.codition,
+            body: Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                  'J\'accepte les conditions generale de la demande de visa'),
             ),
           ),
         ],
@@ -315,9 +392,9 @@ class SuccessScreen extends StatelessWidget {
             SizedBox(height: 10),
             RaisedButton.icon(
               onPressed: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => AssuranceForm())),
+                  MaterialPageRoute(builder: (_) => NavigationHomeScreen())),
               icon: Icon(Icons.replay),
-              label: Text('AGAIN'),
+              label: Text('Return To Home'),
             ),
           ],
         ),
