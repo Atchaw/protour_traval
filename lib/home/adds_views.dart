@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:ui';
 import 'package:protour_traval/app_theme.dart';
 import './model/adds_list_data.dart';
@@ -35,6 +35,7 @@ class _AddsViewState extends State<AddsView> {
         ),
       )
       .toList();
+
   int _current = 0;
 
   @override
@@ -45,21 +46,24 @@ class _AddsViewState extends State<AddsView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            CarouselSlider(
-              items: imageSliders,
-              options: CarouselOptions(
-                  height: 220,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enlargeCenterPage: true,
-                  aspectRatio: 2.0,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                    });
-                  }),
+            GestureDetector(
+              onTap: _launchURL,
+              child: CarouselSlider(
+                items: imageSliders,
+                options: CarouselOptions(
+                    height: 220,
+                    autoPlay: true,
+                    autoPlayInterval: Duration(seconds: 3),
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enlargeCenterPage: true,
+                    aspectRatio: 2.0,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _current = index;
+                      });
+                    }),
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -82,5 +86,14 @@ class _AddsViewState extends State<AddsView> {
         ),
       ),
     );
+  }
+
+  _launchURL() async {
+    const url = 'https://flutter.io';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

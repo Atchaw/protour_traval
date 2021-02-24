@@ -132,7 +132,7 @@ class SearchVoleForm extends StatelessWidget {
                                   selectFieldBloc: searchFormBloc.select1,
                                   decoration: InputDecoration(
                                     contentPadding:
-                                        const EdgeInsets.only(left: 20),
+                                        const EdgeInsets.only(left: 16),
                                     labelText: 'Type',
                                   ),
                                   itemBuilder: (context, value) => value,
@@ -155,7 +155,7 @@ class SearchVoleForm extends StatelessWidget {
                                   selectFieldBloc: searchFormBloc.select2,
                                   decoration: InputDecoration(
                                     contentPadding:
-                                        const EdgeInsets.only(left: 20),
+                                        const EdgeInsets.only(left: 16),
                                     labelText: 'Type1',
                                   ),
                                   itemBuilder: (context, value) => value,
