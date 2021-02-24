@@ -5,6 +5,7 @@ import 'dart:ui';
 import './model/home_list_data.dart';
 import './adds_views.dart';
 import './home_list_view.dart';
+import 'info_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -92,7 +93,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               curve: Curves.fastOutSlowIn)));
                               animationController.forward();
                               return HomeListView(
-                                callback: () {},
+                                callback: () {
+                                  moveTo();
+                                },
                                 homeData: homeList[index],
                                 animation: animation,
                                 animationController: animationController,
@@ -196,6 +199,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       child: Padding(
         padding: const EdgeInsets.only(top: 10.0),
         child: AddsView(),
+      ),
+    );
+  }
+
+  void moveTo() {
+    Navigator.push<dynamic>(
+      context,
+      MaterialPageRoute<dynamic>(
+        builder: (BuildContext context) => InfoScreen(),
       ),
     );
   }
