@@ -9,6 +9,7 @@ import 'package:protour_traval/visa/visa_home_screen.dart';
 import 'package:protour_traval/assurance/assurance_home_screen.dart';
 import 'package:protour_traval/home/home_screen.dart';
 import 'qr_code_screen.dart';
+import 'payment.dart';
 
 class MainHomeScreen extends StatefulWidget {
   @override
@@ -105,7 +106,7 @@ class _MainHomeScreenState extends State<MainHomeScreen>
     Navigator.push<dynamic>(
       context,
       MaterialPageRoute<dynamic>(
-        builder: (BuildContext context) => QrCodeScreen(),
+        builder: (BuildContext context) => PaymentScreen(), //QrCodeScreen(),
       ),
     );
   }
