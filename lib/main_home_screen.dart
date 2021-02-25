@@ -8,6 +8,7 @@ import 'package:protour_traval/vole_ticket/vole_home_screen.dart';
 import 'package:protour_traval/visa/visa_home_screen.dart';
 import 'package:protour_traval/assurance/assurance_home_screen.dart';
 import 'package:protour_traval/home/home_screen.dart';
+import 'qr_code_screen.dart';
 
 class MainHomeScreen extends StatefulWidget {
   @override
@@ -64,7 +65,9 @@ class _MainHomeScreenState extends State<MainHomeScreen>
                     Icons.qr_code,
                     color: AppTheme.black,
                   ),
-                  onPressed: () {}),
+                  onPressed: () {
+                    moveTo();
+                  }),
             ],
             title: SizedBox(
               height: AppBar().preferredSize.height,
@@ -95,6 +98,15 @@ class _MainHomeScreenState extends State<MainHomeScreen>
           ),
         ),
       ), //SafeArea
+    );
+  }
+
+  void moveTo() {
+    Navigator.push<dynamic>(
+      context,
+      MaterialPageRoute<dynamic>(
+        builder: (BuildContext context) => QrCodeScreen(),
+      ),
     );
   }
 

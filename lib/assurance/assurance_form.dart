@@ -184,7 +184,7 @@ class _AssuranceFormState extends State<AssuranceForm> {
 
   FormBlocStep _visaStep(AssuranceFormBloc assuranceFormBloc) {
     return FormBlocStep(
-      title: Text('Visa'),
+      title: Text('Assurance'),
       content: Column(
         children: <Widget>[
           TextFieldBlocBuilder(
@@ -247,7 +247,7 @@ class _AssuranceFormState extends State<AssuranceForm> {
         children: <Widget>[
           TextFieldBlocBuilder(
             textFieldBloc: assuranceFormBloc.firstName,
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.text,
             decoration: InputDecoration(
               labelText: 'Prenome',
               prefixIcon: Icon(Icons.person),
@@ -255,7 +255,7 @@ class _AssuranceFormState extends State<AssuranceForm> {
           ),
           TextFieldBlocBuilder(
             textFieldBloc: assuranceFormBloc.lastName,
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.text,
             decoration: InputDecoration(
               labelText: 'Nome de la famille',
               prefixIcon: Icon(Icons.person),
@@ -333,7 +333,7 @@ class _AssuranceFormState extends State<AssuranceForm> {
             body: Container(
               alignment: Alignment.centerLeft,
               child: Text(
-                  'J\'accepte les conditions generale de la demande de visa'),
+                  'J\'accepte les conditions generale de la demande d\'assurance'),
             ),
           ),
         ],

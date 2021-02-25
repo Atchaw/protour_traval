@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protour_traval/app_theme.dart';
+import 'reservation_form.dart';
 
 class InfoScreen extends StatefulWidget {
   @override
@@ -240,35 +241,40 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                                     width: 16,
                                   ),
                                   Expanded(
-                                    child: Container(
-                                      height: 48,
-                                      decoration: BoxDecoration(
-                                        color: AppTheme.nearlyDarkYellow,
-                                        borderRadius: const BorderRadius.all(
-                                          Radius.circular(16.0),
+                                    child: InkWell(
+                                      child: Container(
+                                        height: 48,
+                                        decoration: BoxDecoration(
+                                          color: AppTheme.nearlyDarkYellow,
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(16.0),
+                                          ),
+                                          boxShadow: <BoxShadow>[
+                                            BoxShadow(
+                                                color: AppTheme.nearlyDarkYellow
+                                                    .withOpacity(0.5),
+                                                offset: const Offset(1.1, 1.1),
+                                                blurRadius: 10.0),
+                                          ],
                                         ),
-                                        boxShadow: <BoxShadow>[
-                                          BoxShadow(
-                                              color: AppTheme.nearlyDarkYellow
-                                                  .withOpacity(0.5),
-                                              offset: const Offset(1.1, 1.1),
-                                              blurRadius: 10.0),
-                                        ],
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'Reserver',
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 18,
-                                            letterSpacing: 0.0,
-                                            color: AppTheme.nearlyWhite,
+                                        child: Center(
+                                          child: Text(
+                                            'Reserver',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 18,
+                                              letterSpacing: 0.0,
+                                              color: AppTheme.nearlyWhite,
+                                            ),
                                           ),
                                         ),
                                       ),
+                                      onTap: () {
+                                        moveTo();
+                                      },
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
@@ -333,6 +339,15 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void moveTo() {
+    Navigator.push<dynamic>(
+      context,
+      MaterialPageRoute<dynamic>(
+        builder: (BuildContext context) => ReservationForm(),
       ),
     );
   }

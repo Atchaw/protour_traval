@@ -257,7 +257,7 @@ class _VisaFormState extends State<VisaForm> {
         children: <Widget>[
           TextFieldBlocBuilder(
             textFieldBloc: visaFormBloc.firstName,
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.text,
             decoration: InputDecoration(
               labelText: 'Prenome',
               prefixIcon: Icon(Icons.person),
@@ -265,7 +265,7 @@ class _VisaFormState extends State<VisaForm> {
           ),
           TextFieldBlocBuilder(
             textFieldBloc: visaFormBloc.lastName,
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.text,
             decoration: InputDecoration(
               labelText: 'Nome de la famille',
               prefixIcon: Icon(Icons.person),
