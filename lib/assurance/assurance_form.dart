@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:protour_traval/navigatoin_home_screen.dart';
+import 'package:protour_traval/payment.dart';
 
 class AssuranceFormBloc extends FormBloc<String, String> {
   //--------------------------Bloc 2 ---------------
@@ -156,7 +157,7 @@ class _AssuranceFormState extends State<AssuranceForm> {
 
                     if (state.stepCompleted == state.lastStep) {
                       Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (_) => SuccessScreen()));
+                          MaterialPageRoute(builder: (_) => PaymentScreen()));
                     }
                   },
                   onFailure: (context, state) {

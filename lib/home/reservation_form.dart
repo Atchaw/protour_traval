@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:protour_traval/app_theme.dart';
 import 'package:protour_traval/navigatoin_home_screen.dart';
+import 'package:protour_traval/payment.dart';
 
 class ReservationFormBloc extends FormBloc<String, String> {
   //--------------------------Bloc 1 ---------------
@@ -90,7 +91,7 @@ class ReservationForm extends StatelessWidget {
 
                       if (state.stepCompleted == state.lastStep) {
                         Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (_) => SuccessScreen()));
+                            MaterialPageRoute(builder: (_) => PaymentScreen()));
                       }
                     },
                     onFailure: (context, state) {

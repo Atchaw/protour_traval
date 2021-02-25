@@ -106,7 +106,7 @@ class _MainHomeScreenState extends State<MainHomeScreen>
     Navigator.push<dynamic>(
       context,
       MaterialPageRoute<dynamic>(
-        builder: (BuildContext context) => PaymentScreen(), //QrCodeScreen(),
+        builder: (BuildContext context) => QrCodeScreen(),
       ),
     );
   }
